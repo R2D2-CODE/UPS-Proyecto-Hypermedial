@@ -1,31 +1,34 @@
 
-CREATE TABLE public."ContenidoLeido" (
-    "IdContenido" integer NOT NULL,
-    "IdEstudiante" integer NOT NULL
+CREATE TABLE ContenidoLeido (
+    IdContenido integer NOT NULL,
+    IdEstudiante integer NOT NULL
 );
 
-CREATE TABLE public."NivelxEstudiante" (
-    "IdEstudiante" integer NOT NULL,
-    "IdNivel" integer NOT NULL,
-    estado "char"
+CREATE TABLE NivelxEstudiante (
+    IdEstudiante integer NOT NULL,
+    IdNivel integer NOT NULL,
+    estado char
 );
+ 
 
-CREATE TABLE public."NotaEvaluacion" (
-    "IdNota" integer NOT NULL,
+CREATE SEQUENCE NotaEvaluacion_IdNota_seq;
+CREATE TABLE NotaEvaluacion (
+    IdNota integer NOT NULL DEFAULT nextval('NotaEvaluacion_IdNota_seq'),
     nota numeric(5,2) NOT NULL,
-    "IdEstudiante" integer,
+    IdEstudiante integer,
     fechacreacion timestamp with time zone,
     tiempo time with time zone
 );
+ALTER SEQUENCE NotaEvaluacion_IdNota_seq OWNED BY NotaEvaluacion.IdNota;
 
-CREATE TABLE public."RecursoVisto" (
-    "IdContenido" integer NOT NULL,
-    "IdEstudiante" integer NOT NULL
+CREATE TABLE RecursoVisto (
+    IdContenido integer NOT NULL,
+    IdEstudiante integer NOT NULL
 );
 
-CREATE TABLE public."RespuestaEvaluacion" (
-    "IdOpcRespEv" integer NOT NULL,
-    "IdNota" integer NOT NULL,
+CREATE TABLE RespuestaEvaluacion (
+    IdOpcRespEv integer NOT NULL,
+    IdNota integer NOT NULL,
     nota numeric(5,2),
-    "FechaInsercion" timestamp with time zone
+    FechaInsercion timestamp with time zone
 );
