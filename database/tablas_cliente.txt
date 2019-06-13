@@ -1,0 +1,31 @@
+
+CREATE TABLE public."ContenidoLeido" (
+    "IdContenido" integer NOT NULL,
+    "IdEstudiante" integer NOT NULL
+);
+
+CREATE TABLE public."NivelxEstudiante" (
+    "IdEstudiante" integer NOT NULL,
+    "IdNivel" integer NOT NULL,
+    estado "char"
+);
+
+CREATE TABLE public."NotaEvaluacion" (
+    "IdNota" integer NOT NULL,
+    nota numeric(5,2) NOT NULL,
+    "IdEstudiante" integer,
+    fechacreacion timestamp with time zone,
+    tiempo time with time zone
+);
+
+CREATE TABLE public."RecursoVisto" (
+    "IdContenido" integer NOT NULL,
+    "IdEstudiante" integer NOT NULL
+);
+
+CREATE TABLE public."RespuestaEvaluacion" (
+    "IdOpcRespEv" integer NOT NULL,
+    "IdNota" integer NOT NULL,
+    nota numeric(5,2),
+    "FechaInsercion" timestamp with time zone
+);
